@@ -6,11 +6,13 @@ SIM ?= icarus
 WAVES ?= 1
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = project_rtl.sv
+
 
 ifneq ($(GATES),yes)
 
-# RTL simulation:
+
+# RTL simulation (also gate level in this case, but before any of the GDS flow runs):
 SIM_BUILD				= sim_build/rtl
 VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
 

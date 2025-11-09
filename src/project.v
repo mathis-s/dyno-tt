@@ -1,27 +1,246 @@
-/*
- * Copyright (c) 2024 Your Name
- * SPDX-License-Identifier: Apache-2.0
- */
-
-`default_nettype none
-
-module tt_um_example (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-    input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
+module tt_um_dyno(
+input wire [7:0] ui_in,
+output wire [7:0] uo_out,
+input wire [7:0] uio_in,
+output wire [7:0] uio_out,
+output wire [7:0] uio_oe,
+input wire ena,
+input wire clk,
+input wire rst_n
 );
-
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
-
-  // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
-
+assign _w0_ = uio_in [7:6];
+assign _w1_ = _w0_ [0:0];
+assign _w2_ = _w0_ [1:1];
+assign _w3_ = ui_in;
+assign _w4_ = _w3_ [0:0];
+assign _w5_ = clk;
+sky130_fd_sc_hd__dfxtp_1 _inst0_ (.CLK(_w5_), .D(_w4_), .Q(_w6_));
+sky130_fd_sc_hd__mux2_1 _inst1_ (.A0(_w4_), .A1(_w6_), .S(_w2_), .X(_w7_));
+assign _w8_ = _w3_ [1:1];
+sky130_fd_sc_hd__dfxtp_1 _inst2_ (.CLK(_w5_), .D(_w8_), .Q(_w9_));
+sky130_fd_sc_hd__mux2_1 _inst3_ (.A0(_w8_), .A1(_w9_), .S(_w2_), .X(_w10_));
+assign _w11_ = _w3_ [3:3];
+sky130_fd_sc_hd__dfxtp_1 _inst4_ (.CLK(_w5_), .D(_w11_), .Q(_w12_));
+sky130_fd_sc_hd__mux2_1 _inst5_ (.A0(_w11_), .A1(_w12_), .S(_w2_), .X(_w13_));
+assign _w14_ = _w3_ [2:2];
+sky130_fd_sc_hd__dfxtp_1 _inst6_ (.CLK(_w5_), .D(_w14_), .Q(_w15_));
+sky130_fd_sc_hd__mux2_1 _inst7_ (.A0(_w14_), .A1(_w15_), .S(_w2_), .X(_w16_));
+sky130_fd_sc_hd__or4_1 _inst8_ (.A(_w7_), .B(_w10_), .C(_w16_), .D(_w13_), .X(_w17_));
+sky130_fd_sc_hd__inv_1 _inst9_ (.A(_w17_), .Y(_w18_));
+assign _w19_ = _w3_ [4:4];
+sky130_fd_sc_hd__dfxtp_1 _inst10_ (.CLK(_w5_), .D(_w19_), .Q(_w20_));
+sky130_fd_sc_hd__mux2_1 _inst11_ (.A0(_w19_), .A1(_w20_), .S(_w2_), .X(_w21_));
+assign _w22_ = _w3_ [6:6];
+sky130_fd_sc_hd__dfxtp_1 _inst12_ (.CLK(_w5_), .D(_w22_), .Q(_w23_));
+sky130_fd_sc_hd__mux2_1 _inst13_ (.A0(_w22_), .A1(_w23_), .S(_w2_), .X(_w24_));
+assign _w25_ = _w3_ [5:5];
+sky130_fd_sc_hd__dfxtp_1 _inst14_ (.CLK(_w5_), .D(_w25_), .Q(_w26_));
+sky130_fd_sc_hd__mux2i_1 _inst15_ (.A0(_w25_), .A1(_w26_), .S(_w2_), .Y(_w27_));
+sky130_fd_sc_hd__a21oi_1 _inst16_ (.A1(_w27_), .A2(_w24_), .B1(_w21_), .Y(_w28_));
+sky130_fd_sc_hd__nand2_1 _inst17_ (.A(_w18_), .B(_w28_), .Y(_w29_));
+sky130_fd_sc_hd__mux2i_1 _inst18_ (.A0(_w14_), .A1(_w15_), .S(_w2_), .Y(_w30_));
+sky130_fd_sc_hd__a21oi_1 _inst19_ (.A1(_w30_), .A2(_w13_), .B1(_w10_), .Y(_w31_));
+sky130_fd_sc_hd__o21ai_0 _inst20_ (.A1(_w7_), .A2(_w31_), .B1(_w29_), .Y(_w32_));
+sky130_fd_sc_hd__dfxtp_1 _inst21_ (.CLK(_w5_), .D(_w32_), .Q(_w33_));
+sky130_fd_sc_hd__mux2_1 _inst22_ (.A0(_w32_), .A1(_w33_), .S(_w1_), .X(_w34_));
+sky130_fd_sc_hd__nor2_1 _inst23_ (.A(_w16_), .B(_w13_), .Y(_w35_));
+sky130_fd_sc_hd__nand2b_1 _inst24_ (.A_N(_w21_), .B(_w27_), .Y(_w36_));
+sky130_fd_sc_hd__or2_0 _inst25_ (.A(_w7_), .B(_w10_), .X(_w37_));
+sky130_fd_sc_hd__a21oi_1 _inst26_ (.A1(_w36_), .A2(_w35_), .B1(_w37_), .Y(_w38_));
+sky130_fd_sc_hd__dfxtp_1 _inst27_ (.CLK(_w5_), .D(_w38_), .Q(_w39_));
+sky130_fd_sc_hd__mux2_1 _inst28_ (.A0(_w38_), .A1(_w39_), .S(_w1_), .X(_w40_));
+sky130_fd_sc_hd__dfxtp_1 _inst29_ (.CLK(_w5_), .D(_w18_), .Q(_w41_));
+sky130_fd_sc_hd__nand2_1 _inst30_ (.A(_w1_), .B(_w41_), .Y(_w42_));
+sky130_fd_sc_hd__o21ai_0 _inst31_ (.A1(_w1_), .A2(_w17_), .B1(_w42_), .Y(_w43_));
+sky130_fd_sc_hd__mux2_1 _inst32_ (.A0(_w25_), .A1(_w26_), .S(_w2_), .X(_w44_));
+assign _w45_ = _w3_ [7:7];
+sky130_fd_sc_hd__dfxtp_1 _inst33_ (.CLK(_w5_), .D(_w45_), .Q(_w46_));
+sky130_fd_sc_hd__mux2_1 _inst34_ (.A0(_w45_), .A1(_w46_), .S(_w2_), .X(_w47_));
+sky130_fd_sc_hd__nor4_1 _inst35_ (.A(_w21_), .B(_w44_), .C(_w24_), .D(_w47_), .Y(_w48_));
+sky130_fd_sc_hd__nand2_1 _inst36_ (.A(_w48_), .B(_w18_), .Y(_w49_));
+sky130_fd_sc_hd__dfxtp_1 _inst37_ (.CLK(_w5_), .D(_w49_), .Q(_w50_));
+sky130_fd_sc_hd__mux2_1 _inst38_ (.A0(_w49_), .A1(_w50_), .S(_w1_), .X(_w51_));
+sky130_fd_sc_hd__nand2_1 _inst39_ (.A(_w7_), .B(_w10_), .Y(_w52_));
+sky130_fd_sc_hd__a211oi_1 _inst40_ (.A1(_w16_), .A2(_w13_), .B1(_w7_), .C1(_w10_), .Y(_w53_));
+sky130_fd_sc_hd__o21ai_0 _inst41_ (.A1(_w35_), .A2(_w53_), .B1(_w52_), .Y(_w54_));
+sky130_fd_sc_hd__nand2_1 _inst42_ (.A(_w21_), .B(_w44_), .Y(_w55_));
+sky130_fd_sc_hd__a31oi_1 _inst43_ (.A1(_w36_), .A2(_w24_), .A3(_w55_), .B1(_w17_), .Y(_w56_));
+sky130_fd_sc_hd__a211oi_1 _inst44_ (.A1(_w17_), .A2(_w28_), .B1(_w56_), .C1(_w54_), .Y(_w57_));
+sky130_fd_sc_hd__and3_1 _inst45_ (.A(_w52_), .B(_w16_), .C(_w37_), .X(_w58_));
+sky130_fd_sc_hd__nor2_1 _inst46_ (.A(_w58_), .B(_w57_), .Y(_w59_));
+sky130_fd_sc_hd__dfxtp_1 _inst47_ (.CLK(_w5_), .D(_w59_), .Q(_w60_));
+sky130_fd_sc_hd__nand2_1 _inst48_ (.A(_w1_), .B(_w60_), .Y(_w61_));
+sky130_fd_sc_hd__o31ai_1 _inst49_ (.A1(_w1_), .A2(_w58_), .A3(_w57_), .B1(_w61_), .Y(_w62_));
+sky130_fd_sc_hd__a2bb2oi_1 _inst50_ (.A1_N(_w35_), .A2_N(_w53_), .B1(_w55_), .B2(_w18_), .Y(_w63_));
+sky130_fd_sc_hd__a21boi_0 _inst51_ (.A1(_w36_), .A2(_w63_), .B1_N(_w52_), .Y(_w64_));
+sky130_fd_sc_hd__dfxtp_1 _inst52_ (.CLK(_w5_), .D(_w64_), .Q(_w65_));
+sky130_fd_sc_hd__mux2_1 _inst53_ (.A0(_w64_), .A1(_w65_), .S(_w1_), .X(_w66_));
+sky130_fd_sc_hd__inv_1 _inst54_ (.A(_w54_), .Y(_w67_));
+sky130_fd_sc_hd__dfxtp_1 _inst55_ (.CLK(_w5_), .D(_w67_), .Q(_w68_));
+sky130_fd_sc_hd__nand2_1 _inst56_ (.A(_w1_), .B(_w68_), .Y(_w69_));
+sky130_fd_sc_hd__o21ai_0 _inst57_ (.A1(_w1_), .A2(_w54_), .B1(_w69_), .Y(_w70_));
+sky130_fd_sc_hd__nor2_1 _inst58_ (.A(_w21_), .B(_w44_), .Y(_w71_));
+sky130_fd_sc_hd__a22oi_1 _inst59_ (.A1(_w21_), .A2(_w44_), .B1(_w24_), .B2(_w47_), .Y(_w72_));
+sky130_fd_sc_hd__nor2_1 _inst60_ (.A(_w24_), .B(_w47_), .Y(_w73_));
+sky130_fd_sc_hd__o21ai_0 _inst61_ (.A1(_w71_), .A2(_w73_), .B1(_w72_), .Y(_w74_));
+sky130_fd_sc_hd__nor2_1 _inst62_ (.A(_w48_), .B(_w18_), .Y(_w75_));
+sky130_fd_sc_hd__a211o_1 _inst63_ (.A1(_w74_), .A2(_w18_), .B1(_w75_), .C1(_w54_), .X(_w76_));
+sky130_fd_sc_hd__dfxtp_1 _inst64_ (.CLK(_w5_), .D(_w76_), .Q(_w77_));
+sky130_fd_sc_hd__mux2_1 _inst65_ (.A0(_w76_), .A1(_w77_), .S(_w1_), .X(_w78_));
+assign _w79_ = {_w78_, _w70_, _w66_, _w62_, _w51_, _w43_, _w40_, _w34_};
+assign uo_out = _w79_;
+sky130_fd_sc_hd__conb_1 _inst66_ (.HI(_w80_), .LO(_w81_));
+sky130_fd_sc_hd__inv_1 _inst67_ (.A(_w82_), .Y(_w83_));
+sky130_fd_sc_hd__dfxtp_1 _inst68_ (.CLK(_w5_), .D(_w83_), .Q(_w82_));
+sky130_fd_sc_hd__xor2_1 _inst69_ (.A(_w82_), .B(_w84_), .X(_w85_));
+sky130_fd_sc_hd__dfxtp_1 _inst70_ (.CLK(_w5_), .D(_w85_), .Q(_w84_));
+sky130_fd_sc_hd__o211ai_1 _inst71_ (.A1(_w7_), .A2(_w10_), .B1(_w16_), .C1(_w13_), .Y(_w86_));
+sky130_fd_sc_hd__a21oi_1 _inst72_ (.A1(_w52_), .A2(_w86_), .B1(_w35_), .Y(_w87_));
+sky130_fd_sc_hd__a211oi_1 _inst73_ (.A1(_w87_), .A2(_w17_), .B1(_w28_), .C1(_w67_), .Y(_w88_));
+sky130_fd_sc_hd__nor2_1 _inst74_ (.A(_w52_), .B(_w30_), .Y(_w89_));
+sky130_fd_sc_hd__a31oi_1 _inst75_ (.A1(_w36_), .A2(_w24_), .A3(_w55_), .B1(_w18_), .Y(_w90_));
+sky130_fd_sc_hd__nand3_1 _inst76_ (.A(_w21_), .B(_w44_), .C(_w24_), .Y(_w91_));
+sky130_fd_sc_hd__a211oi_1 _inst77_ (.A1(_w18_), .A2(_w91_), .B1(_w90_), .C1(_w54_), .Y(_w92_));
+sky130_fd_sc_hd__nor3_1 _inst78_ (.A(_w92_), .B(_w89_), .C(_w88_), .Y(_w93_));
+sky130_fd_sc_hd__dfxtp_1 _inst79_ (.CLK(_w5_), .D(_w93_), .Q(_w94_));
+sky130_fd_sc_hd__nand2_1 _inst80_ (.A(_w1_), .B(_w94_), .Y(_w95_));
+sky130_fd_sc_hd__o41ai_1 _inst81_ (.A1(_w1_), .A2(_w92_), .A3(_w89_), .A4(_w88_), .B1(_w95_), .Y(_w96_));
+sky130_fd_sc_hd__nor3_1 _inst82_ (.A(_w54_), .B(_w55_), .C(_w18_), .Y(_w97_));
+sky130_fd_sc_hd__nor3_1 _inst83_ (.A(_w71_), .B(_w67_), .C(_w87_), .Y(_w98_));
+sky130_fd_sc_hd__nor2_1 _inst84_ (.A(_w98_), .B(_w97_), .Y(_w99_));
+sky130_fd_sc_hd__dfxtp_1 _inst85_ (.CLK(_w5_), .D(_w99_), .Q(_w100_));
+sky130_fd_sc_hd__nand2_1 _inst86_ (.A(_w1_), .B(_w100_), .Y(_w101_));
+sky130_fd_sc_hd__o31ai_1 _inst87_ (.A1(_w1_), .A2(_w98_), .A3(_w97_), .B1(_w101_), .Y(_w102_));
+sky130_fd_sc_hd__inv_1 _inst88_ (.A(_w87_), .Y(_w103_));
+sky130_fd_sc_hd__dfxtp_1 _inst89_ (.CLK(_w5_), .D(_w103_), .Q(_w104_));
+sky130_fd_sc_hd__nand2_1 _inst90_ (.A(_w1_), .B(_w104_), .Y(_w105_));
+sky130_fd_sc_hd__o21ai_0 _inst91_ (.A1(_w1_), .A2(_w87_), .B1(_w105_), .Y(_w106_));
+sky130_fd_sc_hd__nor3_1 _inst92_ (.A(_w71_), .B(_w73_), .C(_w72_), .Y(_w107_));
+sky130_fd_sc_hd__a211oi_1 _inst93_ (.A1(_w74_), .A2(_w17_), .B1(_w107_), .C1(_w54_), .Y(_w108_));
+sky130_fd_sc_hd__nor3b_1 _inst94_ (.A(_w67_), .B(_w87_), .C_N(_w48_), .Y(_w109_));
+sky130_fd_sc_hd__nor2_1 _inst95_ (.A(_w109_), .B(_w108_), .Y(_w110_));
+sky130_fd_sc_hd__dfxtp_1 _inst96_ (.CLK(_w5_), .D(_w110_), .Q(_w111_));
+sky130_fd_sc_hd__nand2_1 _inst97_ (.A(_w1_), .B(_w111_), .Y(_w112_));
+sky130_fd_sc_hd__o31ai_1 _inst98_ (.A1(_w1_), .A2(_w109_), .A3(_w108_), .B1(_w112_), .Y(_w113_));
+assign _w114_ = {_w81_, _w81_, _w84_, _w82_, _w113_, _w106_, _w102_, _w96_};
+assign uio_out = _w114_;
+assign _w115_ = {_w81_, _w81_, _w80_, _w80_, _w80_, _w80_, _w80_, _w80_};
+assign uio_oe = _w115_;
+wire[0:0] _w89_;
+wire[0:0] _w92_;
+wire[0:0] _w90_;
+wire[0:0] _w91_;
+wire[0:0] _w97_;
+wire[0:0] _w98_;
+wire[0:0] _w108_;
+wire[0:0] _w107_;
+wire[0:0] _w17_;
+wire[0:0] _w74_;
+wire[0:0] _w72_;
+wire[0:0] _w55_;
+wire[0:0] _w109_;
+wire[0:0] _w87_;
+wire[0:0] _w86_;
+wire[0:0] _w54_;
+wire[0:0] _w53_;
+wire[0:0] _w37_;
+wire[0:0] _w35_;
+wire[0:0] _w13_;
+wire[0:0] _w16_;
+wire[0:0] _w30_;
+wire[0:0] _w52_;
+wire[0:0] _w10_;
+wire[0:0] _w7_;
+wire[0:0] _w48_;
+wire[0:0] _w73_;
+wire[0:0] _w47_;
+wire[0:0] _w24_;
+wire[0:0] _w36_;
+wire[0:0] _w71_;
+wire[0:0] _w44_;
+wire[0:0] _w27_;
+wire[0:0] _w21_;
+wire[7:0] _w114_;
+wire[0:0] _w113_;
+wire[0:0] _w106_;
+wire[0:0] _w102_;
+wire[0:0] _w96_;
+wire[7:0] _w79_;
+wire[0:0] _w78_;
+wire[0:0] _w70_;
+wire[0:0] _w66_;
+wire[0:0] _w62_;
+wire[0:0] _w51_;
+wire[0:0] _w43_;
+wire[0:0] _w40_;
+wire[0:0] _w34_;
+wire[0:0] _w85_;
+wire[0:0] _w83_;
+wire[0:0] _w32_;
+wire[0:0] _w38_;
+wire[0:0] _w18_;
+wire[0:0] _w49_;
+wire[0:0] _w59_;
+wire[0:0] _w64_;
+wire[0:0] _w67_;
+wire[0:0] _w76_;
+wire[0:0] _w93_;
+wire[0:0] _w99_;
+wire[0:0] _w103_;
+wire[0:0] _w110_;
+wire[0:0] _w2_;
+wire[0:0] _w1_;
+wire[0:0] _w112_;
+wire[0:0] _w5_;
+wire[0:0] _w46_;
+wire[0:0] _w23_;
+wire[0:0] _w26_;
+wire[0:0] _w20_;
+wire[0:0] _w12_;
+wire[0:0] _w15_;
+wire[0:0] _w9_;
+wire[0:0] _w6_;
+wire[0:0] _w84_;
+wire[0:0] _w105_;
+wire[0:0] _w82_;
+wire[0:0] _w101_;
+wire[0:0] _w33_;
+wire[0:0] _w39_;
+wire[0:0] _w41_;
+wire[0:0] _w50_;
+wire[0:0] _w60_;
+wire[0:0] _w65_;
+wire[7:0] _w115_;
+wire[0:0] _w68_;
+wire[0:0] _w77_;
+wire[0:0] _w80_;
+wire[0:0] _w94_;
+wire[1:0] _w0_;
+wire[0:0] _w100_;
+wire[0:0] _w81_;
+wire[0:0] _w45_;
+wire[0:0] _w22_;
+wire[0:0] _w95_;
+wire[0:0] _w25_;
+wire[0:0] _w19_;
+wire[0:0] _w11_;
+wire[0:0] _w69_;
+wire[0:0] _w61_;
+wire[0:0] _w42_;
+wire[0:0] _w104_;
+wire[7:0] _w3_;
+wire[0:0] _w14_;
+wire[0:0] _w8_;
+wire[0:0] _w4_;
+wire[0:0] _w31_;
+wire[0:0] _w29_;
+wire[0:0] _w57_;
+wire[0:0] _w111_;
+wire[0:0] _w56_;
+wire[0:0] _w58_;
+wire[0:0] _w63_;
+wire[0:0] _w75_;
+wire[0:0] _w88_;
+wire[0:0] _w28_;
 endmodule
+

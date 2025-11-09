@@ -9,12 +9,16 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+Design was synthesized to gate level using Dyno-SV by hand, using the command below
+
+```
+dyno-sv --liberty=sky130_fd_sc_hd.lib project_rtl.v -o=src/project.v
+```
 
 ## How to test
 
-Explain how to use your project
+Check if correct values are being output.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None!

@@ -49,7 +49,7 @@ async def test_project(dut):
                 idx = ctz(n)
                 if not (((vals >> j * 4) & 15) == idx | 8):
                     print("wrong value, ", i, j, ((vals >> j * 4) & 15), idx | 8)
-                n &= ~(1 << n)
+                n &= ~(1 << idx)
 
 
 
